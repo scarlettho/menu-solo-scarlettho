@@ -1,11 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class MenuScreen here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.Queue;
+import java.util.LinkedList;
 public class MenuScreen extends World
 {
 
