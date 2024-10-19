@@ -1,13 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Queue;
 import java.util.LinkedList;
-public class MenuScreen extends World
-{
-    private Queue<GreenfootImage> avatars;
-    private GreenfootImage currentAvatar;
-    public MenuScreen()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
-    }
+public class MenuScreen extends World {
+  public MenuScreen() {
+    super(600, 400, 1);
+    addObject(new Button(this::goInstructions), 300, 340);
+  }
+  public void goInstructions() {
+    Greenfoot.setWorld(new InstructionScreen(this));
+  }
 }
