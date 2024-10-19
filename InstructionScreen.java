@@ -9,12 +9,7 @@ public class InstructionScreen extends World
     {
         super(600, 400, 1);
         this.menu = menu;
-        instructions = new String[]
-        {
-            "Welcome to the game!",
-            "Use arrow keys to move.",
-            "Press space to jump."
-        };
+        instructions = new String[]{"Welcome to the game!","Use arrow keys to move.", "Press space to jump."}; 
         index = 0;
         
         labelInstruction = new Label(instructions[index], 30);
