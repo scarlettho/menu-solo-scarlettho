@@ -9,9 +9,7 @@ public class Button extends Actor {
 
     public void act() {
         if (Greenfoot.mouseClicked(this)) {
-            if (action != null) {
-                action.run();
-            }
+            action.run();
         }
     }
 }
