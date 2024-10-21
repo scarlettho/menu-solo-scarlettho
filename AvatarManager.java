@@ -1,21 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.LinkedList;
 
-/**
- * Write a description of class AvatarManager here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class AvatarManager extends World
+public class AvatarManager extends Actor
 {
-
-    /**
-     * Constructor for objects of class AvatarManager.
-     * 
-     */
+    private LinkedList<Avatar> avatars = new LinkedList<>();
+    private Avatar current;
     public AvatarManager()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+    {
+        //puting avatar images to queue
+        avatars.add(new Avatar("face_a.png"));
+        avatars.add(new Avatar("face_b.png"));
+        avatars.add(new Avatar("face_c.png"));
+        
+        current = avatars.remove();
+    }
+    public void goInstructions() {
+        Greenfoot.setWorld(new InstructionScreen(this));
+    }
+
+    public void cycleAvatar() {
+        avatars.add(avatars.remove());  // Rotate the avatars in the queue
+        currentAvatar = avatars.peek();
+        setBackground(currentAvatar);  // Update the background with the new avatar
     }
 }
