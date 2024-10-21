@@ -17,21 +17,10 @@ public class InstructionScreen extends World
     public void buttons()
     {
         Button nextButton = new Button("Next", this::nextInstruction);
-        addObject(nextButton, getWidth()/2, + 100, getHeight() - 50);
-        
+        addObject(nextButton, getWidth() / 2 + 100, getHeight() - 50);  // Only x and y
+    
         Button prevButton = new Button("Previous", this::previousInstruction);
-        addObject(prevButton, getWidth()/2, - 100, getHeight() - 50);
-    }
-    public void act()
-    {
-        if(Greenfoot.mouseClicked(getObjects(Button.class).get(0)))
-        {
-            nextInstruction();
-        }
-        if(Greenfoot.mouseClicked(getObjects(Button.class).get(0)))
-        {
-            previousInstruction();
-        }
+        addObject(prevButton, getWidth() / 2 - 100, getHeight() - 50);
     }
     public void nextInstruction() 
     {
