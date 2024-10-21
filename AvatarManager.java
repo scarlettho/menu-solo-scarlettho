@@ -14,13 +14,29 @@ public class AvatarManager extends Actor
         
         current = avatars.remove();
     }
-    public void goInstructions() {
-        Greenfoot.setWorld(new InstructionScreen(this));
+    
+    @Override
+    protected void addedToWorld(World world)
+    {
+        world.addObject(new Button (this::next, "Next Avatar", "buttonLong_beige.png"), world.getWidth() / 2, world.getHeight() - 50);
+        updateAvatar();
     }
-
-    public void cycleAvatar() {
-        avatars.add(avatars.remove());  // Rotate the avatars in the queue
-        currentAvatar = avatars.peek();
-        setBackground(currentAvatar);  // Update the background with the new avatar
+    
+    private void updateAvatar(){
+        int x = 300; 
+        int y = 100; 
+        World world = getWorld();
+        if(current != null)
+        {
+            world.removeObject(current);
+        }
+        world.addObject(current, x, y);
+    }
+    
+    public void next()
+    {
+        avatars.add(current);
+        current = avatars.remove();
+        updateAvatar();
     }
 }
