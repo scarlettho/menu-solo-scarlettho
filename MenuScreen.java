@@ -10,7 +10,7 @@ public class MenuScreen extends World {
         super(600, 400, 1);
         
         // Add the "Go to Instructions" button
-        addObject(new Button("Instructions", this::goInstructions), 300, 340);
+        addObject(new Button("Instructions", this::goInstructions,"buttonLong_blue.png"), 300, 340);
         
         // Initialize the avatar queue
         avatars = new LinkedList<>();
@@ -22,7 +22,7 @@ public class MenuScreen extends World {
         setBackground(currentAvatar);
         
         // Add the "Next Avatar" button
-        addObject(new Button("Next Avatar", this::cycleAvatar), 300, 300);
+        addObject(new Button("Next Avatar", this::cycleAvatar, "buttonLong_blue.png"), 300, 300);
     }
 
     public void goInstructions() {

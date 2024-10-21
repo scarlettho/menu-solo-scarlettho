@@ -4,7 +4,7 @@ public class Button extends Actor {
     private Runnable action;
     private String label;
     // Constructor: the label comes first, then the action
-    public Button(String label, Runnable action) {
+    public Button(String label, Runnable action, String imageFile) {
         this.action = action;
         this.label = label;
         

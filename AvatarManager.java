@@ -3,40 +3,31 @@ import java.util.LinkedList;
 
 public class AvatarManager extends Actor
 {
-    private LinkedList<Avatar> avatars = new LinkedList<>();
-    private Avatar current;
+    private LinkedList<GreenfootImage> avatarImages = new LinkedList<>();
+    private GreenfootImage currentAvatarImage;
+    
     public AvatarManager()
     {
-        //puting avatar images to queue
-        avatars.add(new Avatar("face_a.png"));
-        avatars.add(new Avatar("face_b.png"));
-        avatars.add(new Avatar("face_c.png"));
+        // Putting avatar images to LinkedList
+        avatarImages.add(new GreenfootImage("face_a.png"));
+        avatarImages.add(new GreenfootImage("face_b.png"));
+        avatarImages.add(new GreenfootImage("face_c.png"));
         
-        current = avatars.remove();
+        currentAvatarImage = avatarImages.peek(); // Get the first avatar without removing it
     }
     
     @Override
     protected void addedToWorld(World world)
     {
-        world.addObject(new Button (this::next, "Next Avatar", "buttonLong_beige.png"), world.getWidth() / 2, world.getHeight() - 50);
-        updateAvatar();
+        world.addObject(new Button("Next Avatar", this::next, "buttonLong_beige.png"), world.getWidth() / 2, world.getHeight() - 50);
+        setImage(currentAvatarImage); // Set the initial avatar image
     }
     
-    private void updateAvatar(){
-        int x = 300; 
-        int y = 100; 
-        World world = getWorld();
-        if(current != null)
-        {
-            world.removeObject(current);
-        }
-        world.addObject(current, x, y);
-    }
-    
+    // Method to change the current avatar
     public void next()
     {
-        avatars.add(current);
-        current = avatars.remove();
-        updateAvatar();
+        avatarImages.add(avatarImages.remove()); // Rotate the avatars in the list
+        currentAvatarImage = avatarImages.peek(); // Peek at the next avatar without removing
+        setImage(currentAvatarImage); // Update the image to the new avatar
     }
 }
