@@ -8,7 +8,7 @@ public class InstructionScreen extends World
     private int index;
     private Label label;
     private Stack<World> screenHistory;
-    public InstructionScreen(MenuScreen menu,Stack<World> screenHistory)
+    public InstructionScreen(MenuScreen menu, Stack<World> screenHistory)
     {
         super(600, 400, 1);
         this.menu = menu;
