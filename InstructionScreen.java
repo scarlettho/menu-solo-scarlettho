@@ -1,12 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Stack;
+
 public class InstructionScreen extends World
 {
     private String[] instructions;
+    private MenuScreen menu;
     private int index;
     private Label label;
-    public InstructionScreen(MenuScreen menu)
+    private Stack<World> screenHistory;
+    public InstructionScreen(MenuScreen menu,Stack<World> screenHistory)
     {
         super(600, 400, 1);
+        this.menu = menu;
+        this.screenHistory = screenHistory;
         instructions = new String[]{"Welcome to the game!","Use arrow keys to move.", "Press space to jump."}; 
         index = 0;
         
@@ -37,5 +43,10 @@ public class InstructionScreen extends World
             index--;
             label.setValue(instructions[index]);
         }
+    }
+    public void switchScreen(World newScreen)
+    {
+        screenHistory.push(this);
+        Greenfoot.setWorld(newScreen);
     }
 }

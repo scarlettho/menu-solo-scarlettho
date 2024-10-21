@@ -1,16 +1,20 @@
 import greenfoot.*;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class MenuScreen extends World {
     private Queue<GreenfootImage> avatars;
     private GreenfootImage currentAvatar;
+    private Stack<World> screenHistory;  // Stack to track screen history
 
     public MenuScreen() {
         super(600, 400, 1);
         
+        screenHistory = new Stack<>();  // Initialize the stack
+        
         // Add the "Go to Instructions" button
-        addObject(new Button("Instructions", this::goInstructions,"buttonLong_blue.png"), 300, 340);
+        addObject(new Button("Instructions", this::goInstructions, "buttonLong_blue.png"), 300, 340);
         
         // Initialize the avatar queue
         avatars = new LinkedList<>();
@@ -26,7 +30,8 @@ public class MenuScreen extends World {
     }
 
     public void goInstructions() {
-        Greenfoot.setWorld(new InstructionScreen(this));
+        screenHistory.push(this);  // Push current screen to the stack before switching
+        Greenfoot.setWorld(new InstructionScreen(this, screenHistory));
     }
 
     public void cycleAvatar() {
