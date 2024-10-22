@@ -18,15 +18,17 @@ public class HighScore extends World
     }
     private void displayHighScore()
     {
-        Map<String, Integer> highScore = new HashMap<>();
-        highScore.put("Hannah", 100);
-        highScore.put("Alice", 80);
-        highScore.put("Melody", 50);
-        int yPosition = 50; // Starting y position for the first entry
+        highScore = new HashMap<>();
+        highScore.put("Glizzy", 2000);
+        highScore.put("Alice", 1000);
+        highScore.put("Melody", 4000);
+        int yPosition = 100; // Starting y position for the first entry
         for(Map.Entry<String, Integer> entry : highScore.entrySet())
         {
-            String displayText = entry.getKey() + ": " + entry.getValue();
-            Label scoreLabel = new Label(displayText, 30);
+            String displayText = entry.getKey();
+            int score = entry.getValue();
+            
+            Label scoreLabel = new Label(displayText + ": " + score, 30);
             addObject(scoreLabel, getWidth() / 2, yPosition);
             yPosition += 50; // Increase y position for the next entry
         }

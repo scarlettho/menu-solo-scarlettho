@@ -23,14 +23,19 @@ public class MenuScreen extends World {
         // Add the AvatarManager
         AvatarManager avatarManager = new AvatarManager();
         addObject(avatarManager, getWidth() / 2, getHeight() / 2); // Center the AvatarManager
+        
+        // Add the "High Scores" button
+        addObject(new Button("High Score", this::goToHighScore, "buttonLong_blue.png"), 300, 285);
     }
-
     public void goInstructions() {
         Greenfoot.setWorld(new InstructionScreen(this));
     }
-
     public void cycleAvatar() {
         avatars.add(avatars.remove());  // Rotate the avatars in the queue
         currentAvatar = avatars.peek();
+    }
+    public void goToHighScore()
+    {
+        Greenfoot.setWorld(new HighScore());
     }
 }
