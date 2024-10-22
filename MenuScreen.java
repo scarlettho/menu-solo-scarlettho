@@ -9,6 +9,9 @@ public class MenuScreen extends World {
     public MenuScreen() {
         super(600, 400, 1);
         
+        // Add the "Go to Instructions" button
+        addObject(new Button("Instructions", this::goInstructions, "buttonLong_blue.png"), 200, 340);
+        
         // Initialize the avatar queue
         avatars = new LinkedList<>();
         avatars.add(new GreenfootImage("face_a.png"));
@@ -16,14 +19,10 @@ public class MenuScreen extends World {
         avatars.add(new GreenfootImage("face_c.png"));
         
         currentAvatar = avatars.peek();
-        setBackground(currentAvatar);
         
         // Add the AvatarManager
         AvatarManager avatarManager = new AvatarManager();
         addObject(avatarManager, getWidth() / 2, getHeight() / 2); // Center the AvatarManager
-        
-        // Add the "Go to Instructions" button
-        addObject(new Button("Instructions", this::goInstructions, "buttonLong_blue.png"), 300, 340);
     }
 
     public void goInstructions() {
@@ -33,6 +32,5 @@ public class MenuScreen extends World {
     public void cycleAvatar() {
         avatars.add(avatars.remove());  // Rotate the avatars in the queue
         currentAvatar = avatars.peek();
-        setBackground(currentAvatar);  // Update the background with the new avatar
     }
 }

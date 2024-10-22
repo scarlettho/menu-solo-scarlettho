@@ -20,7 +20,7 @@ public class AvatarManager extends Actor
     @Override
     protected void addedToWorld(World world)
     {
-        world.addObject(new Button("Next Avatar", this::next, "buttonLong_beige.png"), world.getWidth() / 2, world.getHeight() - 50);
+        world.addObject(new Button("Next Avatar", this::next, "buttonLong_beige.png"), 400, 340);
         setImage(currentAvatarImage); // Set the initial avatar image
     }
     
