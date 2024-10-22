@@ -20,7 +20,7 @@ public class Label extends Actor
      */
     public Label(String value, int fontSize)
     {
-        this.text = text;
+        this.text = value;
         this.fontSize = fontSize;
         updateImage();
     }
