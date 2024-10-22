@@ -19,9 +19,9 @@ public class HighScore extends World
     private void displayHighScore()
     {
         highScore = new HashMap<>();
-        highScore.put("Glizzy", 2000);
-        highScore.put("Alice", 1000);
-        highScore.put("Melody", 4000);
+        highScore.put("Glizzy", 5900);
+        highScore.put("Alice", 2613);
+        highScore.put("Melody", 1525);
         int yPosition = 100; // Starting y position for the first entry
         for(Map.Entry<String, Integer> entry : highScore.entrySet())
         {
