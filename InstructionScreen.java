@@ -26,13 +26,13 @@ public class InstructionScreen extends World
     public void buttons()
     {
         Button nextButton = new Button("Next", this::nextInstruction, "buttonLong_blue.png");
-        addObject(nextButton, getWidth() / 2 + 100, getHeight() - 50);  // Only x and y
+        addObject(nextButton, 500, 340);  // Only x and y
     
         Button prevButton = new Button("Previous", this::previousInstruction, "buttonLong_blue.png");
-        addObject(prevButton, getWidth() / 2 - 100, getHeight() - 50);
+        addObject(prevButton, 100, 340);
         
         Button backButton = new Button("Back to Menu", this::goBack, "buttonLong_blue.png");
-        addObject(prevButton, getWidth() / 2 - 100, getHeight() - 100);
+        addObject(backButton, 300, 340);
     }
     public void nextInstruction() 
     {
