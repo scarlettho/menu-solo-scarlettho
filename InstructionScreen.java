@@ -13,6 +13,9 @@ public class InstructionScreen extends World
         super(600, 400, 1);
         this.menu = menu;
         this.screenHistory = new Stack(); // store screen history
+        
+        screenHistory.push(menu);
+        
         instructions = new String[]{"Click <Next Avatar> to see more!","Click <High Score> to view your high score!", "Click <Back to Menu> to exit!"}; 
         index = 0;
         

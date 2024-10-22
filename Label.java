@@ -41,7 +41,9 @@ public class Label extends Actor
      */
     private void updateImage()
     {
-        image = new GreenfootImage(text, fontSize, Color.RED, new Color(0, 0, 0, 0));
-        setImage(image);
+        if (text != null && !text.isEmpty()) {
+            image = new GreenfootImage(text, fontSize, Color.BLACK, Color.WHITE);
+            setImage(image);
+        }
     }
 }
