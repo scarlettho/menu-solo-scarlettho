@@ -16,27 +16,20 @@ public class MenuScreen extends World {
         // Add the "Go to Instructions" button
         addObject(new Button("Instructions", this::goInstructions, "buttonLong_blue.png"), 300, 340);
         
-        // Initialize the avatar queue
-        avatars = new LinkedList<>();
-        avatars.add(new GreenfootImage("face_a.png"));
-        avatars.add(new GreenfootImage("face_b.png"));
-        avatars.add(new GreenfootImage("face_c.png"));
-        
         currentAvatar = avatars.peek();
         setBackground(currentAvatar);
         
-        // Add the "Next Avatar" button
+        addObject(new Button("Instructions", this::goInstructions, "buttonLong_blue.png"), 300, 340);
         addObject(new Button("Next Avatar", this::cycleAvatar, "buttonLong_blue.png"), 300, 300);
     }
 
     public void goInstructions() {
         screenHistory.push(this);  // Push current screen to the stack before switching
-        Greenfoot.setWorld(new InstructionScreen(this, screenHistory));
+        Greenfoot.setWorld(new InstructionScreen(this));
     }
 
     public void cycleAvatar() {
-        avatars.add(avatars.remove());  // Rotate the avatars in the queue
-        currentAvatar = avatars.peek();
-        setBackground(currentAvatar);  // Update the background with the new avatar
+    AvatarManager avatarManager = new AvatarManager(this); // Pass MenuScreen reference
+    addObject(avatarManager, getWidth() / 2, getHeight() / 2); // Position it as needed
     }
 }

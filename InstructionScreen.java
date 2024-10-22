@@ -7,13 +7,13 @@ public class InstructionScreen extends World
     private MenuScreen menu;
     private int index;
     private Label label;
-    private Stack<World> screenHistory;
-    public InstructionScreen(MenuScreen menu, Stack<World> screenHistory)
+    private Stack<World> screenHistory;  // Stack to keep track of screen history
+    public InstructionScreen(MenuScreen menu)
     {
         super(600, 400, 1);
         this.menu = menu;
-        this.screenHistory = screenHistory;
-        instructions = new String[]{"Welcome to the game!","Use arrow keys to move.", "Press space to jump."}; 
+        this.screenHistory = new Stack(); // store screen history
+        instructions = new String[]{"Click <Next Avatar> to see more!","Click <High Score> to view your high score!", "Click <Back to Menu> to exit!"}; 
         index = 0;
         
         label = new Label(instructions[index], 30);
@@ -27,6 +27,9 @@ public class InstructionScreen extends World
     
         Button prevButton = new Button("Previous", this::previousInstruction, "buttonLong_blue.png");
         addObject(prevButton, getWidth() / 2 - 100, getHeight() - 50);
+        
+        Button backButton = new Button("Back to Menu", this::goBack, "buttonLong_blue.png");
+        addObject(prevButton, getWidth() / 2 - 100, getHeight() - 100);
     }
     public void nextInstruction() 
     {
@@ -44,9 +47,12 @@ public class InstructionScreen extends World
             label.setValue(instructions[index]);
         }
     }
-    public void switchScreen(World newScreen)
+    public void goBack()
     {
-        screenHistory.push(this);
-        Greenfoot.setWorld(newScreen);
+        if(!screenHistory.isEmpty())
+        {
+            World previousScreen = screenHistory.pop(); // Get the last screen
+            Greenfoot.setWorld(previousScreen); // Switch to the previous screen
+        }
     }
 }
