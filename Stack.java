@@ -1,21 +1,40 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.World;
+import java.util.List;
+import java.util.ArrayList;
 
-/**
- * Write a description of class Stack here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Stack
-{
+public class Stack {
+    private List<World> stack;
 
-    /**
-     * Constructor for objects of class Stack.
-     * 
-     */
     public Stack()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        
+    {
+        stack = new ArrayList<>();
+    }
+    public void push(World screen)
+    {
+        stack.add(screen);
+    }
+    public World pop()
+    {
+        if(!stack.isEmpty())
+        {
+            return stack.remove(stack.size() - 1);
+        }
+        return null;
+    }
+    public World peek()
+    {
+        if(!stack.isEmpty())
+        {
+            return stack.get(stack.size() - 1);
+        }
+        return null;
+    }
+    public boolean isEmpty()
+    {
+        return stack.isEmpty();
+    }
+    public int size()
+    {
+        return stack.size();
     }
 }
