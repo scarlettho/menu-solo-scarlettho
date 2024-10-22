@@ -29,7 +29,7 @@ public class MenuScreen extends World {
     }
 
     public void cycleAvatar() {
-    AvatarManager avatarManager = new AvatarManager(this); // Pass MenuScreen reference
-    addObject(avatarManager, getWidth() / 2, getHeight() / 2); // Position it as needed
+        AvatarManager avatarManager = new AvatarManager(this); // Pass MenuScreen reference
+        addObject(avatarManager, getWidth() / 2, getHeight() / 2); // Position it as needed
     }
 }
